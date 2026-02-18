@@ -1,0 +1,151 @@
+:root {
+    --primary-teal: #00b7af; /* Vibrant teal/turquoise from context */
+    --bg-color: #10181f; /* Dark background for signage context */
+    --text-white: #ffffff;
+    --sun-gold: #FFD700;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* For digital signage, prevent scroll bars */
+}
+
+/* 
+   Horizontal card format: approx 2:1 aspect ratio.
+   Using viewport units to ensure it scales nicely on different screens.
+*/
+.weather-card {
+    background-color: var(--primary-teal);
+    width: 90vw;
+    max-width: 1400px; /* Cap width for very large screens */
+    aspect-ratio: 2 / 1; /* Force 2:1 ratio */
+    border-radius: 20px; /* Slight rounding for modern feel */
+    display: flex;
+    flex-direction: row;
+    padding: 4vw; /* Responsive padding */
+    color: var(--text-white);
+    align-items: center; /* Center items vertically */
+    justify-content: space-between;
+    box-shadow: none; /* Flat design requested, explicit no shadow */
+}
+
+/* Left side content hierarchy */
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    flex: 1; /* Take up available space */
+}
+
+.condition {
+    font-size: 3vw; /* Responsive font size */
+    font-weight: 600;
+    margin-bottom: 1vw;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.temperature {
+    font-size: 15vw; /* Large focal point */
+    font-weight: 700;
+    line-height: 1;
+    margin: 1vw 0; /* Add breathing room */
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+}
+
+.date {
+    font-size: 2vw;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.location {
+    font-size: 2vw;
+    font-weight: 400;
+    opacity: 0.8; /* Slightly dimmer for hierarchy */
+    font-style: italic; /* Distinct style for location placeholder */
+}
+
+.temp-range {
+    font-size: 2vw;
+    font-weight: 600;
+    margin-top: 1vw;
+}
+
+/* Right side icon */
+.weather-icon {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    align-items: center;
+    height: 100%;
+}
+
+.sun-svg {
+    width: 25vw; /* Large icon size */
+    height: 25vw;
+    max-width: 400px;
+    max-height: 400px;
+    animation: rotate-slow 20s linear infinite; /* Subtle animation for "radiating" feel */
+}
+
+/* Add a subtle rotation to the sun for "radiating" effect without complex gradients */
+@keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (aspect-ratio < 2/1) {
+    /* If screen is taller/square, ensure card fits width */
+    .weather-card {
+        width: 95vw;
+    }
+}
+
+/* 
+   When the viewport width exceeds ~1555px (where 90vw = 1400px),
+   switch to fixed pixel sizes so elements don't outgrow the container.
+*/
+@media (min-width: 1555px) {
+    .weather-card {
+        padding: 56px; /* 4vw of 1400px */
+    }
+    .condition {
+        font-size: 42px; /* 3vw of 1400px */
+        margin-bottom: 14px;
+    }
+    .temperature {
+        font-size: 210px; /* 15vw of 1400px */
+        margin: 14px 0;
+    }
+    .details {
+        gap: 7px;
+    }
+    .date, .location, .temp-range {
+        font-size: 28px; /* 2vw of 1400px */
+    }
+    .sun-svg {
+        width: 350px; /* 25vw of 1400px */
+        height: 350px;
+    }
+}
