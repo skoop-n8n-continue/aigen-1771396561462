@@ -1,6 +1,6 @@
 :root {
-    --primary-teal: #00b7af;
-    --bg-color: #10181f;
+    --primary-red: #c62828; /* Deep vibrant red */
+    --bg-color: #121212; /* Dark background */
     --text-white: #ffffff;
     --sun-gold: #FFD700;
 }
@@ -23,7 +23,7 @@ body {
 }
 
 .weather-card {
-    background-color: var(--primary-teal);
+    background-color: var(--primary-red);
     width: 90vw;
     max-width: 1400px;
     aspect-ratio: 2 / 1;
@@ -32,7 +32,7 @@ body {
     flex-direction: row;
     color: var(--text-white);
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Added a subtle shadow for depth despite flat request, can remove if too much */
+    box-shadow: none; /* Pure flat design */
 }
 
 /* Current Weather Section */
