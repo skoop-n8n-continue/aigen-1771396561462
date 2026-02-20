@@ -1,8 +1,8 @@
 :root {
-    --primary-blue: #1976d2; /* Vibrant blue */
+    --primary-yellow: #f9a825; /* Vibrant yellow/amber */
     --bg-color: #121212; /* Dark background */
     --text-white: #ffffff;
-    --sun-gold: #FFD700;
+    --sun-color: #ffffff; /* White icon for better contrast on yellow */
 }
 
 * {
@@ -23,7 +23,7 @@ body {
 }
 
 .weather-card {
-    background-color: var(--primary-blue);
+    background-color: var(--primary-yellow);
     width: 90vw;
     max-width: 1400px;
     aspect-ratio: 2 / 1;
@@ -97,6 +97,7 @@ body {
     height: 20vw;
     max-width: 300px;
     max-height: 300px;
+    color: var(--sun-color);
     animation: rotate-slow 20s linear infinite;
 }
 
@@ -132,6 +133,7 @@ body {
 .f-icon {
     width: 3vw;
     height: 3vw;
+    color: var(--sun-color);
 }
 
 .f-temp {
