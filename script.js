@@ -1,15 +1,8 @@
-// Simple script to handle dynamic date updates if needed
-// For now, it sets the static date requested, but could easily be live.
-
 document.addEventListener('DOMContentLoaded', () => {
-    // The prompt requested "Monday, February 16" specifically.
-    // I will adhere to the prompt but allow for live updates if uncommented.
-    
-    // updateDate(); 
-    // setInterval(updateDate, 60000); // Update every minute
-    
-    // Add a subtle entrance animation
+    // Entrance animations
     const card = document.querySelector('.weather-card');
+    const forecastItems = document.querySelectorAll('.forecast-item');
+    
     if (card) {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
@@ -20,14 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'translateY(0)';
         }, 100);
     }
+
+    // Staggered entry for forecast items
+    forecastItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(20px)';
+        item.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        }, 500 + (index * 150));
+    });
+
+    // Update time/date if needed
+    // updateDate();
 });
 
 function updateDate() {
     const dateElement = document.getElementById('current-date');
     if (!dateElement) return;
-    
     const now = new Date();
-    
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     dateElement.textContent = now.toLocaleDateString('en-US', options);
 }
