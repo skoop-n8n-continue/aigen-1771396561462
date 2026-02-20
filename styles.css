@@ -1,5 +1,5 @@
 :root {
-    --primary-green: #2e7d32; /* Vibrant green */
+    --primary-blue: #1976d2; /* Vibrant blue */
     --bg-color: #121212; /* Dark background */
     --text-white: #ffffff;
     --sun-gold: #FFD700;
@@ -23,7 +23,7 @@ body {
 }
 
 .weather-card {
-    background-color: var(--primary-green);
+    background-color: var(--primary-blue);
     width: 90vw;
     max-width: 1400px;
     aspect-ratio: 2 / 1;
